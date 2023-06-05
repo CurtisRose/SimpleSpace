@@ -21,8 +21,7 @@ public class SolarSystemUI : MonoBehaviour
 
     // Battle Panel for Selected Planet
     [SerializeField] Transform fleetBattlePanel;
-    [SerializeField] Transform fleetCombatInfoContentLocation;
-    [SerializeField] Transform fleetCombatInfoPrefab;
+    [SerializeField] Text fleetBattlePanelText;
 
     [SerializeField] ShipUIElement shipUIElement;
 
@@ -46,6 +45,7 @@ public class SolarSystemUI : MonoBehaviour
 
     public void UpdateUI()
     {
+        HideUI();
         if (solarSystem.InSpaceCombat())
         {
             DisplayFleetBattlePanel();
@@ -101,7 +101,7 @@ public class SolarSystemUI : MonoBehaviour
 
     private void DisplayFleetBattlePanel()
     {
-        BattleManager battleManager = solarSystem.battleManager;
-
+        fleetBattlePanel.gameObject.SetActive(true);
+        fleetBattlePanelText.text = "Fleet Battle at " + solarSystem.GetName();
     }
 }

@@ -83,7 +83,7 @@ public class SolarSystem : SelectableObject
 
     public void FleetArrival(Fleet arrivingFleet)
     {
-        if (this.fleet == null)
+        if (this.fleet == null || this.fleet.shipsInFleet.Count <= 0)
         {
             SetFleet(arrivingFleet);
         }

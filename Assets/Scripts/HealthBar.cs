@@ -36,9 +36,7 @@ public class HealthBar : MonoBehaviour
         }
         if (ship.currentHealth <= 0)
         {
-            Color color = shipImage.color;
-            color.a = .5f;
-            shipImage.color = color;
+            shipImage.color = new Color(1, 0, 0, 0.8f);
         }
     }
     private void OnDisable()
