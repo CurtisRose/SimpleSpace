@@ -21,6 +21,7 @@ public class ShipUIElement : MonoBehaviour,
     public bool selectable = true;
 
     [SerializeField] Slider attackRateSlider;
+    [SerializeField] HealthBar healthBar;
 
     void Start()
     {
@@ -34,6 +35,12 @@ public class ShipUIElement : MonoBehaviour,
         attackRateSlider.maxValue = ship.attackRate;
         attackRateSlider.value = 0;
         ship.OnAttackTimerModified += ChangeAttackRateSlider;
+    }
+
+    public void UpdateData()
+    {
+        attackRateSlider.value = ship.attackRate;
+        healthBar.UpdateHealth();
     }
 
     private void ChangeAttackRateSlider(float amount)

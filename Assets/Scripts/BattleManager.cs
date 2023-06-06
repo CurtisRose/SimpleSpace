@@ -15,7 +15,6 @@ public class BattleManager : MonoBehaviour
     [SerializeField] Transform fleetCombatInfoPrefab;
     [SerializeField] ShipUIElement shipUIElement;
 
-
     private void Awake()
     {
         battleIndicator.gameObject.SetActive(false);
@@ -31,11 +30,14 @@ public class BattleManager : MonoBehaviour
             return;
         }
         float deltaTime = Time.deltaTime;
-        foreach(Fleet fleet in fleetsInCombat)
+        for (int i = 0; i <= fleetsInCombat.Count-1; i++)
         {
-            foreach(Ship ship in fleet.shipsInFleet)
+            if (fleetsInCombat[i] != null)
             {
-                ship.ModifyAttackTimer(deltaTime);
+                foreach (Ship ship in fleetsInCombat[i].shipsInFleet)
+                {
+                    ship.ModifyAttackTimer(deltaTime);
+                }
             }
         }
     }
@@ -185,5 +187,10 @@ public class BattleManager : MonoBehaviour
                 yield return null;
             }
         }
+    }
+
+    private void OnEnable()
+    {
+        
     }
 }

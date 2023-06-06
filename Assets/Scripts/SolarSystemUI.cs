@@ -128,5 +128,9 @@ public class SolarSystemUI : MonoBehaviour
     {
         fleetBattlePanel.gameObject.SetActive(true);
         fleetBattlePanelText.text = "Fleet Battle at " + solarSystem.GetName();
+        foreach(ShipUIElement shipUIElement in this.gameObject.GetComponentsInChildren<ShipUIElement>())
+        {
+            shipUIElement.UpdateData();
+        }
     }
 }
