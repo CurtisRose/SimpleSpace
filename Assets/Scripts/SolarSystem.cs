@@ -17,6 +17,8 @@ public class SolarSystem : SelectableObject
 
     [SerializeField] SolarSystemUI solarSystemUI;
     [SerializeField] public FleetSelection fleetSelection;
+
+    [SerializeField] public Team.TeamName teamName;
     
     private void Start()
     {
@@ -24,6 +26,10 @@ public class SolarSystem : SelectableObject
         gameObject.name = solarSystemName;
         targetingReticle.gameObject.SetActive(false);
         battleManager = GetComponentInChildren<BattleManager>();
+        if (fleet != null)
+        {
+            SwitchTeams(fleet.teamName);
+        }
     }
 
     // Called when values change in inspector
@@ -45,28 +51,15 @@ public class SolarSystem : SelectableObject
         solarSystemUI.HideUI();
     }
 
+    public void SwitchTeams(Team.TeamName teamName)
+    {
+        this.teamName = teamName;
+        GetComponentInChildren<Renderer>().material.color = Team.GetTeamColor(teamName);
+    }
+
     void UpdatePlanetType()
     {
-        if (systemType == SystemType.NONE)
-        {
-            systemColor = Color.grey;
-        }
-        else if (systemType == SystemType.PRODUCTION)
-        {
-            systemColor = Color.red;
-        }
-        else if (systemType == SystemType.RESOURCE)
-        {
-            systemColor = Color.blue;
-        }
-        else if (systemType == SystemType.REPAIR)
-        {
-            systemColor = Color.green;
-        }
-        else
-        {
-            systemColor = Color.magenta;
-        }
+        systemColor = Color.white;
         GetComponentInChildren<Renderer>().material.color = systemColor;
     }
 
@@ -83,8 +76,12 @@ public class SolarSystem : SelectableObject
 
     public void FleetArrival(Fleet arrivingFleet)
     {
-        if (this.fleet == null)
+        if (this.fleet == null || this.fleet.shipsInFleet.Count <= 0)
         {
+            if (teamName != arrivingFleet.teamName)
+            {
+                SwitchTeams(arrivingFleet.teamName);
+            }
             SetFleet(arrivingFleet);
         }
         else
@@ -93,7 +90,7 @@ public class SolarSystem : SelectableObject
             if (!battleManager.HasBattleStarted())
             {
                 // If they are on the same team merge them
-                if (this.fleet.teamNumber == arrivingFleet.teamNumber)
+                if (this.fleet.teamName == arrivingFleet.teamName)
                 {
                     this.fleet.MergeFleet(arrivingFleet);
                 } else // If they are not on the same team, start battle
@@ -131,6 +128,10 @@ public class SolarSystem : SelectableObject
         if (otherFleet != null)
         {
             this.fleet = otherFleet;
+            if (teamName != otherFleet.teamName)
+            {
+                SwitchTeams(otherFleet.teamName);
+            }
         }
     }
 
@@ -149,6 +150,7 @@ public class SolarSystem : SelectableObject
         GameObject newFleetObject = new GameObject("NewFleet");
         newFleetObject.transform.position = this.transform.position;
         Fleet newFleet = newFleetObject.AddComponent<Fleet>();
+        newFleet.teamName = teamName;
         newFleet.shipsInFleet = new List<Ship>(ships);
         foreach(Ship ship in newFleet.shipsInFleet)
         {

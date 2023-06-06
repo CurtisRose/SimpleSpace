@@ -10,10 +10,13 @@ public class HealthBar : MonoBehaviour
     int current;
     [SerializeField] Ship ship;
     [SerializeField] Image shipImage;
+    [SerializeField] Image shipSelectorImage;
 
     private void Start()
     {
+        //Debug.Log("HealthBarStarted");
         ship = GetComponentInParent<ShipUIElement>().ship;
+        gameObject.name += " " + ship.name;
         healthChunks = new List<Image>();
         for (int i = 0; i < ship.maxHealth; i++)
         {
@@ -23,26 +26,48 @@ public class HealthBar : MonoBehaviour
         }
         ship.OnHealthModified += UpdateHealth;
         UpdateHealth();
+        //Debug.Log("HealthBar has " + healthChunks.Count + " health chunks");
     }
 
     public void UpdateHealth()
     {
-        for (int i = 0; i < ship.maxHealth - ship.currentHealth; i++)
+        //Debug.Log("HealthBar has is being updated for " + ship.name);
+        string test = gameObject.name;
+        if (ship != null)
         {
-            if (i < healthChunks.Count)
+            for (int i = 0; i < ship.maxHealth - ship.currentHealth; i++)
             {
-                healthChunks[i].color = Color.red;
+                if (i < healthChunks.Count)
+                {
+                    string shipName = ship.name;
+                    healthChunks[i].color = Color.red;
+                }
+            }
+            if (ship.currentHealth <= 0)
+            {
+                shipImage.color = new Color(1, 0, 0, 0.8f);
+                shipSelectorImage.color = Color.red;
             }
         }
-        if (ship.currentHealth <= 0)
+        else
         {
-            Color color = shipImage.color;
-            color.a = .5f;
-            shipImage.color = color;
+            //shipImage.color = new Color(1, 0, 0, 0.8f);
+            //shipSelectorImage.color = Color.red;
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (ship != null)
+        {
+            ship.OnHealthModified += UpdateHealth;
         }
     }
     private void OnDisable()
     {
-        //ship.OnHealthModified -= UpdateHealth;
+        if (ship != null)
+        {
+            ship.OnHealthModified -= UpdateHealth;
+        }
     }
 }

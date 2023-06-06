@@ -326,7 +326,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.000061035156, y: 0}
-  m_SizeDelta: {x: -628.24, y: 53.206}
+  m_SizeDelta: {x: 0, y: 53.206}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4020302381599548320
 MonoBehaviour:
@@ -559,7 +559,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -704,7 +704,7 @@ MonoBehaviour:
   m_VerticalScrollbar: {fileID: 0}
   m_HorizontalScrollbarVisibility: 2
   m_VerticalScrollbarVisibility: 2
-  m_HorizontalScrollbarSpacing: -3
+  m_HorizontalScrollbarSpacing: -10
   m_VerticalScrollbarSpacing: -3
   m_OnValueChanged:
     m_PersistentCalls:
@@ -821,7 +821,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -17}
+  m_SizeDelta: {x: 0, y: -10}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &2512392211695243120
 CanvasRenderer:
@@ -921,6 +921,9 @@ MonoBehaviour:
   battleIndicator: {fileID: 6216199619369447282}
   blinkRate: 1
   fleetsInCombat: []
+  fleetCombatInfoContentLocation: {fileID: 8029805392140901366}
+  fleetCombatInfoPrefab: {fileID: 7483217460320923783, guid: f173223cd90882a428f9198d125a9102, type: 3}
+  shipUIElement: {fileID: 1338730995220261253, guid: 61d732fe6a8be0544811870179c08847, type: 3}
 --- !u!1 &4333295402560455279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,8 +1372,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -17, y: 20}
+  m_AnchoredPosition: {x: 0, y: -11}
+  m_SizeDelta: {x: 0, y: 20}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &5754276720876711020
 CanvasRenderer:
@@ -1673,6 +1676,7 @@ MonoBehaviour:
   battleManager: {fileID: 6587688650051733005}
   solarSystemUI: {fileID: 2943984929670720441}
   fleetSelection: {fileID: 2539821352819519098}
+  teamName: 0
 --- !u!114 &1251695496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1701,15 +1705,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   solarSystem: {fileID: 8738152359540161365}
   UIPanel: {fileID: 522870547754431806}
+  UIPanelBorder: {fileID: 1281474146570481480}
+  UIPanelHorizontalThing: {fileID: 2418942076265854273}
   mainText: {fileID: 5265895027316703339}
   secondaryText: {fileID: 5312308742004852947}
   fleetPanel: {fileID: 8565943464913942125}
+  fleetPanelBorder: {fileID: 7690750352186808865}
   fleetName: {fileID: 5703601665374865796}
   fleetText: {fileID: 8732470445235553340}
   fleetContentContainer: {fileID: 500780036491903477}
   fleetBattlePanel: {fileID: 8029805390744398320}
-  fleetCombatInfoContentLocation: {fileID: 8029805392140901366}
-  fleetCombatInfoPrefab: {fileID: 7483217460320923783, guid: f173223cd90882a428f9198d125a9102, type: 3}
+  fleetBattlePanelText: {fileID: 357041421580171944}
   shipUIElement: {fileID: 1338730995220261253, guid: 61d732fe6a8be0544811870179c08847, type: 3}
   fleetSelection: {fileID: 2539821352819519098}
 --- !u!1 &8738152359868481515
@@ -1923,11 +1929,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5575276611813520740, guid: 7d84536844e2c7d4cb56f8e48927b288, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 2458.7
+      value: 2376.9
       objectReference: {fileID: 0}
     - target: {fileID: 5575276611813520740, guid: 7d84536844e2c7d4cb56f8e48927b288, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 682.236
+      value: 581.9
       objectReference: {fileID: 0}
     - target: {fileID: 5575276611813520740, guid: 7d84536844e2c7d4cb56f8e48927b288, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1959,11 +1965,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5575276611813520740, guid: 7d84536844e2c7d4cb56f8e48927b288, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.0046387
+      value: 0.0002861
       objectReference: {fileID: 0}
     - target: {fileID: 5575276611813520740, guid: 7d84536844e2c7d4cb56f8e48927b288, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 186.68793
+      value: 163.66
       objectReference: {fileID: 0}
     - target: {fileID: 5575276611813520740, guid: 7d84536844e2c7d4cb56f8e48927b288, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1985,22 +1991,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5575276612591154394, guid: 7d84536844e2c7d4cb56f8e48927b288, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5575276612591154394, guid: 7d84536844e2c7d4cb56f8e48927b288, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5575276612591154394, guid: 7d84536844e2c7d4cb56f8e48927b288, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5000001
-      objectReference: {fileID: 0}
-    - target: {fileID: 5575276612682057570, guid: 7d84536844e2c7d4cb56f8e48927b288, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -1169.3717
-      objectReference: {fileID: 0}
     - target: {fileID: 5575276612782126802, guid: 7d84536844e2c7d4cb56f8e48927b288, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -2015,11 +2005,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5575276612908631602, guid: 7d84536844e2c7d4cb56f8e48927b288, type: 3}
       propertyPath: m_Size
-      value: 0.49999988
+      value: 0.99998343
       objectReference: {fileID: 0}
     - target: {fileID: 5575276612908631602, guid: 7d84536844e2c7d4cb56f8e48927b288, type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0.9980769
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d84536844e2c7d4cb56f8e48927b288, type: 3}
@@ -2028,6 +2018,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5575276611813520740, guid: 7d84536844e2c7d4cb56f8e48927b288, type: 3}
   m_PrefabInstance: {fileID: 2463686697752599700}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &357041421580171944 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2793554173931873852, guid: 7d84536844e2c7d4cb56f8e48927b288, type: 3}
+  m_PrefabInstance: {fileID: 2463686697752599700}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8029805392140901366 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5575276612682057570, guid: 7d84536844e2c7d4cb56f8e48927b288, type: 3}

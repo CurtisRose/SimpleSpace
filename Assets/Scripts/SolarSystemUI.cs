@@ -10,19 +10,21 @@ public class SolarSystemUI : MonoBehaviour
 
     // Main Panel for Selected Planet
     [SerializeField] Transform UIPanel;
+    [SerializeField] Transform UIPanelBorder;
+    [SerializeField] Transform UIPanelHorizontalThing;
     [SerializeField] Text mainText;
     [SerializeField] Text secondaryText;
 
     // Fleet Panel For Selected Planet
     [SerializeField] Transform fleetPanel;
+    [SerializeField] Transform fleetPanelBorder;
     [SerializeField] Text fleetName;
     [SerializeField] Text fleetText;
     [SerializeField] Transform fleetContentContainer;
 
     // Battle Panel for Selected Planet
     [SerializeField] Transform fleetBattlePanel;
-    [SerializeField] Transform fleetCombatInfoContentLocation;
-    [SerializeField] Transform fleetCombatInfoPrefab;
+    [SerializeField] Text fleetBattlePanelText;
 
     [SerializeField] ShipUIElement shipUIElement;
 
@@ -46,6 +48,7 @@ public class SolarSystemUI : MonoBehaviour
 
     public void UpdateUI()
     {
+        HideUI();
         if (solarSystem.InSpaceCombat())
         {
             DisplayFleetBattlePanel();
@@ -69,6 +72,19 @@ public class SolarSystemUI : MonoBehaviour
         UIPanel.gameObject.SetActive(true);
         mainText.text = solarSystem.GetName();
         secondaryText.text = "This is a solar system";
+
+        Color color = Team.GetTeamColor(solarSystem.teamName);
+        Color existingColor = UIPanel.GetComponent<Image>().color;
+        color.a = existingColor.a;
+        UIPanel.GetComponent<Image>().color = color;
+
+        existingColor = UIPanelBorder.GetComponent<Image>().color;
+        color.a = existingColor.a;
+        UIPanelBorder.GetComponent<Image>().color = color;
+
+        existingColor = UIPanelHorizontalThing.GetComponent<Image>().color;
+        color.a = existingColor.a;
+        UIPanelHorizontalThing.GetComponent<Image>().color = color;
     }
 
     private void DisplayFleetInfoPanel(Fleet fleet)
@@ -92,6 +108,15 @@ public class SolarSystemUI : MonoBehaviour
                 UIElement.ship = ship;
             }
 
+            Color color = Team.GetTeamColor(solarSystem.teamName);
+            Color existingColor = fleetPanel.GetComponent<Image>().color;
+            color.a = existingColor.a;
+            fleetPanel.GetComponent<Image>().color = color;
+
+            existingColor = fleetPanelBorder.GetComponent<Image>().color;
+            color.a = existingColor.a;
+            fleetPanelBorder.GetComponent<Image>().color = color;
+
         }
         else
         {
@@ -101,7 +126,11 @@ public class SolarSystemUI : MonoBehaviour
 
     private void DisplayFleetBattlePanel()
     {
-        BattleManager battleManager = solarSystem.battleManager;
-
+        fleetBattlePanel.gameObject.SetActive(true);
+        fleetBattlePanelText.text = "Fleet Battle at " + solarSystem.GetName();
+        foreach(ShipUIElement shipUIElement in this.gameObject.GetComponentsInChildren<ShipUIElement>())
+        {
+            shipUIElement.UpdateData();
+        }
     }
 }

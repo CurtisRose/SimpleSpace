@@ -110,7 +110,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 439044095946569708}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33cd2adf98f9f0e47af28f4a0c145208, type: 3}
   m_Name: 
@@ -195,7 +195,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthChunk: {fileID: 6341953931017777818, guid: 168562d70886eab4c869a3f27a66b767, type: 3}
   ship: {fileID: 0}
-  shipImage: {fileID: 0}
+  shipImage: {fileID: 5393901199987326776}
+  shipSelectorImage: {fileID: 5986413051449363412}
 --- !u!1 &1514871215130283232
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +525,9 @@ MonoBehaviour:
   - {r: 0, g: 1, b: 1, a: 1}
   - {r: 0, g: 1, b: 0.42371392, a: 1}
   ship: {fileID: 0}
+  selectable: 1
+  attackRateSlider: {fileID: 7663823475327536040}
+  healthBar: {fileID: 7814888472372104712}
 --- !u!1 &5526661339734556809
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,7 +579,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7501014573292631804
 RectTransform:
   m_ObjectHideFlags: 0

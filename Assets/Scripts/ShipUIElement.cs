@@ -18,59 +18,91 @@ public class ShipUIElement : MonoBehaviour,
     FleetSelection fleetSelection;
 
     public Ship ship;
+    public bool selectable = true;
+
+    [SerializeField] Slider attackRateSlider;
+    [SerializeField] HealthBar healthBar;
 
     void Start()
     {
         fleetSelection = GetComponentInParent<FleetSelection>();
-        fleetSelection.AddShip(ship);
+        if (fleetSelection != null)
+        {
+            fleetSelection.AddShip(ship);
+        }
         selectorImage.gameObject.SetActive(true);
         selectorImage.color = selectedColors[(int)SelectorColor.SELECTED];
+        attackRateSlider.maxValue = ship.attackRate;
+        attackRateSlider.value = 0;
+        ship.OnAttackTimerModified += ChangeAttackRateSlider;
     }
 
+    public void UpdateData()
+    {
+        attackRateSlider.value = ship.attackRate;
+        healthBar.UpdateHealth();
+    }
 
+    private void ChangeAttackRateSlider(float amount)
+    {
+        attackRateSlider.value = amount;
+    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        selectorImage.gameObject.SetActive(true);
-        selectorImage.color = selectedColors[(int)SelectorColor.HOVERED];
+        if (selectable)
+        {
+            selectorImage.gameObject.SetActive(true);
+            selectorImage.color = selectedColors[(int)SelectorColor.HOVERED];
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (selected)
+        if (selectable)
         {
-            selectorImage.color = selectedColors[(int)SelectorColor.SELECTED];
-        }
-        else
-        {
-            selectorImage.gameObject.SetActive(false);
+            if (selected)
+            {
+                selectorImage.color = selectedColors[(int)SelectorColor.SELECTED];
+            }
+            else
+            {
+                selectorImage.gameObject.SetActive(false);
+            }
         }
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (selected)
+        if (selectable)
         {
-            selectorImage.color = selectedColors[(int)SelectorColor.SELECTED];
-        } else
-        {
-            selectorImage.gameObject.SetActive(false);
+            if (selected)
+            {
+                selectorImage.color = selectedColors[(int)SelectorColor.SELECTED];
+            }
+            else
+            {
+                selectorImage.gameObject.SetActive(false);
+            }
         }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (selected)
+        if (selectable)
         {
-            selected = false;
-            fleetSelection.RemoveShip(ship);
-            selectorImage.color = selectedColors[(int)SelectorColor.ONCLICKED];
-        }
-        else
-        {
-            selected = true;
-            selectorImage.color = selectedColors[(int)SelectorColor.ONCLICKED];
-            fleetSelection.AddShip(ship);
+            if (selected)
+            {
+                selected = false;
+                fleetSelection.RemoveShip(ship);
+                selectorImage.color = selectedColors[(int)SelectorColor.ONCLICKED];
+            }
+            else
+            {
+                selected = true;
+                selectorImage.color = selectedColors[(int)SelectorColor.ONCLICKED];
+                fleetSelection.AddShip(ship);
+            }
         }
     }
 }
