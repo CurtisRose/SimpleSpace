@@ -6,6 +6,7 @@ public class SolarSystemGraph : MonoBehaviour
 {
     [SerializeField] List<SolarSystem> solarSystems;
     [SerializeField] List<SolarVertex> solarVertices;
+    [SerializeField] Material lineMaterial;
 
     struct SolarVertex
     {
@@ -67,7 +68,7 @@ public class SolarSystemGraph : MonoBehaviour
                     childObject.transform.localPosition = Vector3.zero;
 
                     LineRenderer lineRenderer = childObject.AddComponent<LineRenderer>();
-                    lineRenderer.material = new Material(Shader.Find("Unlit/Color"));
+                    lineRenderer.material = lineMaterial;
                     lineRenderer.material.color = Color.white;
                     lineRenderer.widthCurve = new AnimationCurve(new Keyframe(0, 0.05f), new Keyframe(1, 0.05f));
                     lineRenderer.positionCount = 2;
