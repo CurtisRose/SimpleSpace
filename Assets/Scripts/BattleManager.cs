@@ -97,6 +97,7 @@ public class BattleManager : MonoBehaviour
         {
             fleetsInCombat.Add(newFleet);
             Transform fleetCombatInfo = Instantiate<Transform>(fleetCombatInfoPrefab, fleetCombatInfoContentLocation);
+            fleetCombatInfo.GetComponent<Image>().color = Team.GetTeamColor(newFleet.teamName);
             foreach (Ship ship in newFleet.shipsInFleet)
             {
                 ShipUIElement newShipUIElement = Instantiate<ShipUIElement>(shipUIElement, fleetCombatInfo.GetChild(1).GetChild(0).GetChild(0));
