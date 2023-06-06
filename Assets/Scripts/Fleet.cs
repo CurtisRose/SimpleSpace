@@ -8,7 +8,7 @@ public class Fleet : MonoBehaviour
     [SerializeField] public SolarSystem currentSystem;
     public List<Ship> shipsInFleet;
     public float speed;
-    public int teamNumber;
+    public Team.TeamName teamName;
 
     private void Start()
     {
@@ -53,7 +53,7 @@ public class Fleet : MonoBehaviour
             // If the system you are passing through has any ships or is already in combat, this fleet must stop and join battle.
             
             if(solarSystem.GetFleet() != null && 
-                (solarSystem.GetFleet().teamNumber != teamNumber || 
+                (solarSystem.GetFleet().teamName != teamName || 
                 solarSystem.InSpaceCombat()))
             {
                 solarSystem.FleetArrival(this);

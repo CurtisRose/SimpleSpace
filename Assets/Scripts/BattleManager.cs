@@ -70,7 +70,7 @@ public class BattleManager : MonoBehaviour
         foreach(Fleet fleet in fleetsInCombat)
         {
             whichFleet += 1;
-            if (newFleet.teamNumber == fleet.teamNumber)
+            if (newFleet.teamName == fleet.teamName)
             {
                 fleet.MergeFleet(newFleet);
                 teamAlreadyInCombat = true;
@@ -110,11 +110,11 @@ public class BattleManager : MonoBehaviour
     {
         //Debug.Log(ship.name + " Attacked Another Ship... But Which One?");
         // Find a ship to attack
-        int teamNumber = ship.GetComponentInParent<Fleet>().teamNumber;
+        Team.TeamName teamName = ship.GetComponentInParent<Fleet>().teamName;
         List<Ship> shipsToAttack = new List<Ship>();
         foreach(Fleet fleet in fleetsInCombat)
         {
-            if (fleet.teamNumber == teamNumber)
+            if (fleet.teamName == teamName)
             {
                 continue;
             } else

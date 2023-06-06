@@ -1676,6 +1676,7 @@ MonoBehaviour:
   battleManager: {fileID: 6587688650051733005}
   solarSystemUI: {fileID: 2943984929670720441}
   fleetSelection: {fileID: 2539821352819519098}
+  teamName: 0
 --- !u!114 &1251695496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1704,9 +1705,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   solarSystem: {fileID: 8738152359540161365}
   UIPanel: {fileID: 522870547754431806}
+  UIPanelBorder: {fileID: 1281474146570481480}
+  UIPanelHorizontalThing: {fileID: 2418942076265854273}
   mainText: {fileID: 5265895027316703339}
   secondaryText: {fileID: 5312308742004852947}
   fleetPanel: {fileID: 8565943464913942125}
+  fleetPanelBorder: {fileID: 7690750352186808865}
   fleetName: {fileID: 5703601665374865796}
   fleetText: {fileID: 8732470445235553340}
   fleetContentContainer: {fileID: 500780036491903477}
