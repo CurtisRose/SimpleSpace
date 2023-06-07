@@ -41,7 +41,7 @@ public class Fleet : MonoBehaviour
             Vector3 direction = (solarSystem.transform.position - transform.position).normalized;
             //Quaternion toRotation = Quaternion.LookRotation(direction);
 
-            while ((solarSystem.transform.position - transform.position).sqrMagnitude > 0.01f)
+            while ((solarSystem.transform.position - transform.position).sqrMagnitude > 0.001f)
             {
                 //transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, speed * Time.deltaTime);
                 transform.position = Vector3.MoveTowards(transform.position, solarSystem.transform.position, speed * Time.deltaTime);
