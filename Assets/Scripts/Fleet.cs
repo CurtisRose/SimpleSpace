@@ -36,6 +36,12 @@ public class Fleet : MonoBehaviour
 
     private IEnumerator MoveAlongPath(List<SolarSystem> path)
     {
+        // Invalid path
+        if (path.Count <= 0)
+        {
+            yield break;
+        }
+
         foreach (SolarSystem solarSystem in path)
         {
             Vector3 direction = (solarSystem.transform.position - transform.position).normalized;

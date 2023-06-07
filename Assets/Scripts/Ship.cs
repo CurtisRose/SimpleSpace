@@ -10,7 +10,7 @@ public class Ship : MonoBehaviour
     [SerializeField] public float attackRate;
     float attackTimer;
     [SerializeField] public int maxHealth;
-    public int currentHealth;
+    int currentHealth;
     [SerializeField] public float speed;
 
     public delegate void HealthModified();
@@ -77,5 +77,10 @@ public class Ship : MonoBehaviour
         {
             OnHealthModified();
         }
+    }
+
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
     }
 }

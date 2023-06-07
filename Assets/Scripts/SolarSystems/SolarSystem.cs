@@ -19,7 +19,10 @@ public class SolarSystem : SelectableObject
     [SerializeField] public FleetSelection fleetSelection;
 
     [SerializeField] public Team.TeamName teamName;
-    
+
+    public delegate void FleetArrivalEvent(Fleet arrivingFleet);
+    public event FleetArrivalEvent OnFleetArrival;
+
     private void Start()
     {
         UpdatePlanetType();
@@ -76,10 +79,15 @@ public class SolarSystem : SelectableObject
 
     public void FleetArrival(Fleet arrivingFleet)
     {
+        // This probably happens when the defending fleet wins.
+        // Just make sure to update the UI, switch from battle UI to Solar System UI;
         if (arrivingFleet == fleet)
         {
+            solarSystemUI.UpdateUI();
             return;
         }
+
+
         if (this.fleet == null || this.fleet.shipsInFleet.Count <= 0)
         {
             if (teamName != arrivingFleet.teamName)
@@ -87,6 +95,10 @@ public class SolarSystem : SelectableObject
                 SwitchTeams(arrivingFleet.teamName);
             }
             SetFleet(arrivingFleet);
+            if (OnFleetArrival != null)
+            {
+                OnFleetArrival(arrivingFleet);
+            }
         }
         else
         {

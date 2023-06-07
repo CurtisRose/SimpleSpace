@@ -124,7 +124,7 @@ public class BattleManager : MonoBehaviour
             {
                 foreach(Ship enemyShip in fleet.shipsInFleet)
                 {
-                    if (enemyShip.currentHealth > 0)
+                    if (enemyShip.GetCurrentHealth() > 0)
                     {
                         shipsToAttack.Add(enemyShip);
                     }
@@ -188,10 +188,5 @@ public class BattleManager : MonoBehaviour
                 yield return null;
             }
         }
-    }
-
-    private void OnEnable()
-    {
-        
     }
 }

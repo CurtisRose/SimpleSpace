@@ -35,15 +35,19 @@ public class HealthBar : MonoBehaviour
         string test = gameObject.name;
         if (ship != null)
         {
-            for (int i = 0; i < ship.maxHealth - ship.currentHealth; i++)
+            for (int i = 0; i < ship.maxHealth; i++)
             {
-                if (i < healthChunks.Count)
+                // Health colors down from the top, which is 0
+                if (i < ship.maxHealth - ship.GetCurrentHealth())
                 {
-                    string shipName = ship.name;
                     healthChunks[i].color = Color.red;
                 }
+                else
+                {
+                    healthChunks[i].color = Color.white;
+                }
             }
-            if (ship.currentHealth <= 0)
+            if (ship.GetCurrentHealth() <= 0)
             {
                 shipImage.color = new Color(1, 0, 0, 0.8f);
                 shipSelectorImage.color = Color.red;
