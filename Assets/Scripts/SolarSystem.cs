@@ -76,6 +76,10 @@ public class SolarSystem : SelectableObject
 
     public void FleetArrival(Fleet arrivingFleet)
     {
+        if (arrivingFleet == fleet)
+        {
+            return;
+        }
         if (this.fleet == null || this.fleet.shipsInFleet.Count <= 0)
         {
             if (teamName != arrivingFleet.teamName)

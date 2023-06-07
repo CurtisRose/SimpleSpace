@@ -168,7 +168,7 @@ public class BattleManager : MonoBehaviour
         {
             if (fleetsInCombat[i].shipsInFleet.Count > 0)
             {
-                GetComponentInParent<SolarSystem>().FleetArrival(fleetsInCombat[i]);
+1                GetComponentInParent<SolarSystem>().FleetArrival(fleetsInCombat[i]);
             }
         }
     }
