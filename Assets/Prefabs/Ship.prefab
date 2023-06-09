@@ -48,8 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   attackPower: 1
-  attackRate: 1
+  attackRate: 5
   maxHealth: 5
+  currentHealth: 0
   speed: 1
   shipModel: {fileID: 510266523413127323}
 --- !u!1 &9026711715817792831
@@ -177,6 +178,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 23514865417621352, guid: 01489deeeb7ca1744877c2e3e590d958, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5220fb0c1bf8e3f4b815c88d22000e45, type: 2}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 01489deeeb7ca1744877c2e3e590d958, type: 3}
@@ -185,24 +190,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1122383940670264, guid: 01489deeeb7ca1744877c2e3e590d958, type: 3}
   m_PrefabInstance: {fileID: 510921606319960995}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1226258406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510266523413127323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b39bc3e40f5429549a55c9fb78f10c19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  attackPower: 0
-  attackRate: 0
-  maxHealth: 0
-  speed: 0
-  shipModel: {fileID: 0}
 --- !u!4 &511602546377193043 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4147015843481072, guid: 01489deeeb7ca1744877c2e3e590d958, type: 3}

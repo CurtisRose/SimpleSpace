@@ -114,6 +114,7 @@ public class SolarSystem : SelectableObject
         if (arrivingFleet == fleet)
         {
             solarSystemUI.UpdateUI();
+            OnFleetArrival(arrivingFleet);
             return;
         }
 

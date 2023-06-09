@@ -22,6 +22,8 @@ public class ShipUIElement : MonoBehaviour,
 
     [SerializeField] Slider attackRateSlider;
     [SerializeField] HealthBar healthBar;
+    [SerializeField] Image shipImage;
+    [SerializeField] Image shipSelectorImage;
 
     void Start()
     {
@@ -35,12 +37,22 @@ public class ShipUIElement : MonoBehaviour,
         attackRateSlider.maxValue = ship.attackRate;
         attackRateSlider.value = 0;
         ship.OnAttackTimerModified += ChangeAttackRateSlider;
+        ship.OnHealthModified += UpdateData;
+
     }
 
     public void UpdateData()
     {
-        attackRateSlider.value = ship.attackRate;
         healthBar.UpdateHealth();
+        if (ship == null || ship.GetCurrentHealth() <= 0)
+        {
+            shipImage.color = new Color(1, 0, 0, 0.8f);
+            shipSelectorImage.color = Color.red;
+            foreach (Image image in attackRateSlider.GetComponentsInChildren<Image>())
+            {
+                image.color = Color.red;
+            }
+        }
     }
 
     private void ChangeAttackRateSlider(float amount)

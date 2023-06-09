@@ -10,7 +10,7 @@ public class Ship : MonoBehaviour
     [SerializeField] public float attackRate;
     float attackTimer;
     [SerializeField] public int maxHealth;
-    int currentHealth;
+    [SerializeField] int currentHealth;
     [SerializeField] public float speed;
 
     public delegate void HealthModified();
@@ -85,5 +85,10 @@ public class Ship : MonoBehaviour
     public int GetCurrentHealth()
     {
         return currentHealth;
+    }
+
+    public void ChangeColor(Color color)
+    {
+        shipModel.GetComponent<Renderer>().material.color = color;
     }
 }

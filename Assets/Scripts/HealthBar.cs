@@ -9,8 +9,6 @@ public class HealthBar : MonoBehaviour
     List<Image> healthChunks;
     int current;
     [SerializeField] Ship ship;
-    [SerializeField] Image shipImage;
-    [SerializeField] Image shipSelectorImage;
 
     private void Start()
     {
@@ -27,7 +25,6 @@ public class HealthBar : MonoBehaviour
             newHealthChunk.color = Color.white;
             healthChunks.Add(newHealthChunk);
         }
-        ship.OnHealthModified += UpdateHealth;
         UpdateHealth();
         //Debug.Log("HealthBar has " + healthChunks.Count + " health chunks");
     }
@@ -35,11 +32,16 @@ public class HealthBar : MonoBehaviour
     public void UpdateHealth()
     {
         //Debug.Log("HealthBar has is being updated for " + ship.name);
-        string test = gameObject.name;
+        //string test = gameObject.name;
         if (ship != null)
         {
             for (int i = 0; i < ship.maxHealth; i++)
             {
+                if (healthChunks[i] == null)
+                {
+                    Debug.Log("Test Health Bar Image Missing");
+                    continue;
+                }
                 // Health colors down from the top, which is 0
                 if (i < ship.maxHealth - ship.GetCurrentHealth())
                 {
@@ -50,31 +52,11 @@ public class HealthBar : MonoBehaviour
                     healthChunks[i].color = Color.white;
                 }
             }
-            if (ship.GetCurrentHealth() <= 0)
-            {
-                shipImage.color = new Color(1, 0, 0, 0.8f);
-                shipSelectorImage.color = Color.red;
-            }
         }
         else
         {
             //shipImage.color = new Color(1, 0, 0, 0.8f);
             //shipSelectorImage.color = Color.red;
-        }
-    }
-
-    private void OnEnable()
-    {
-        if (ship != null)
-        {
-            ship.OnHealthModified += UpdateHealth;
-        }
-    }
-    private void OnDisable()
-    {
-        if (ship != null)
-        {
-            ship.OnHealthModified -= UpdateHealth;
         }
     }
 }

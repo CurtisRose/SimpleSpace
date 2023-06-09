@@ -156,6 +156,7 @@ public class BattleManager : MonoBehaviour
         StopAllCoroutines();
         battleIndicator.gameObject.SetActive(false);
         battleStarted = false;
+        // Find destroyed fleets, Remove them from list and delete game object
         for (int i = fleetsInCombat.Count - 1; i >= 0; i--)
         {
             if (fleetsInCombat[i].shipsInFleet.Count <= 0)
@@ -164,10 +165,19 @@ public class BattleManager : MonoBehaviour
                 fleetsInCombat.RemoveAt(i);
             }
         }
+        // Find non-destroyed fleet and set it's arrival to the solar system. Destroy all of it's dead ships
         for (int i = fleetsInCombat.Count - 1; i >= 0; i--)
         {
             if (fleetsInCombat[i].shipsInFleet.Count > 0)
             {
+                Ship[] shipsInFleet = fleetsInCombat[i].GetComponentsInChildren<Ship>();
+                for (int j = shipsInFleet.Length - 1; j >= 0; j--)
+                {
+                    if(shipsInFleet[j].GetCurrentHealth() <= 0)
+                    {
+                        Destroy(shipsInFleet[j].gameObject);
+                    }
+                }
                 GetComponentInParent<SolarSystem>().FleetArrival(fleetsInCombat[i]);
             }
         }

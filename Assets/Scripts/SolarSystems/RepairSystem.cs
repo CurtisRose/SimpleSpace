@@ -30,13 +30,22 @@ public class RepairSystem : SolarAddons
             if (repairTimer > repairRate)
             {
                 repairTimer = 0.0f;
+                float mostDamagedValue = 1.0f;
+                Ship mostDamagedShip = null;
                 foreach (Ship ship in fleet.shipsInFleet)
                 {
-                    if (ship.GetCurrentHealth() < ship.maxHealth)
+                    float damageValue = (float)ship.GetCurrentHealth() / (float)ship.maxHealth;
+
+                    if (damageValue < mostDamagedValue)
                     {
-                        ship.DamageRepaired(1);
-                        return;
+                        mostDamagedValue = damageValue;
+                        mostDamagedShip = ship;
                     }
+                }
+                if (mostDamagedShip != null)
+                {
+                    mostDamagedShip.DamageRepaired(1);
+                    return;
                 }
                 // All ships are repaired. Stop looking.
                 repairing = false;

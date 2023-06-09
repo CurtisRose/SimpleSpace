@@ -20,6 +20,7 @@ public class Fleet : MonoBehaviour
             {
                 speed = ship.speed;
             }
+            ship.ChangeColor(Team.GetTeamColor(teamName));
         }
     }
 
