@@ -2251,6 +2251,7 @@ MonoBehaviour:
   attackRate: 0
   maxHealth: 0
   speed: 0
+  shipModel: {fileID: 0}
 --- !u!4 &327486022 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4147015843481072, guid: 01489deeeb7ca1744877c2e3e590d958, type: 3}
@@ -2309,6 +2310,7 @@ MonoBehaviour:
   attackRate: 0
   maxHealth: 0
   speed: 0
+  shipModel: {fileID: 0}
 --- !u!4 &327930621 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4147015843481072, guid: 01489deeeb7ca1744877c2e3e590d958, type: 3}
@@ -2466,6 +2468,7 @@ MonoBehaviour:
   attackRate: 0
   maxHealth: 0
   speed: 0
+  shipModel: {fileID: 0}
 --- !u!4 &378146748 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4147015843481072, guid: 01489deeeb7ca1744877c2e3e590d958, type: 3}
@@ -4415,6 +4418,7 @@ MonoBehaviour:
   attackRate: 0
   maxHealth: 0
   speed: 0
+  shipModel: {fileID: 0}
 --- !u!4 &663993007 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4147015843481072, guid: 01489deeeb7ca1744877c2e3e590d958, type: 3}
@@ -7429,14 +7433,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a0c5224076cccf4f97fe6e197b0ff4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panSpeed: 20
+  panSpeed: 1
   panBorderThickness: -50000000
-  scrollSpeed: 200
+  scrollSpeed: 50
+  smoothSpeed: 20
   minFov: 1
   maxFov: 50
   limitX: {x: -20, y: 20}
   limitZ: {x: -20, y: 20}
   panSpeedActual: 0
+  targetOrtho: 0
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8706,6 +8712,7 @@ MonoBehaviour:
   attackRate: 0
   maxHealth: 0
   speed: 0
+  shipModel: {fileID: 0}
 --- !u!4 &1185514700 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4147015843481072, guid: 01489deeeb7ca1744877c2e3e590d958, type: 3}
@@ -8795,6 +8802,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 915298357}
     m_Modifications:
+    - target: {fileID: 356322836, guid: f2fc8c0048692094184cd91be3c2ded1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 943380608339668516, guid: f2fc8c0048692094184cd91be3c2ded1, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -8985,6 +8996,10 @@ PrefabInstance:
       objectReference: {fileID: 181919628}
     - target: {fileID: 6332400167053134441, guid: f2fc8c0048692094184cd91be3c2ded1, type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624665482105664591, guid: f2fc8c0048692094184cd91be3c2ded1, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6639564236185451116, guid: f2fc8c0048692094184cd91be3c2ded1, type: 3}
@@ -9235,6 +9250,7 @@ MonoBehaviour:
   attackRate: 0
   maxHealth: 0
   speed: 0
+  shipModel: {fileID: 0}
 --- !u!4 &1339823072 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4147015843481072, guid: 01489deeeb7ca1744877c2e3e590d958, type: 3}
@@ -9563,6 +9579,7 @@ MonoBehaviour:
   attackRate: 0
   maxHealth: 0
   speed: 0
+  shipModel: {fileID: 0}
 --- !u!4 &1449858115 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4147015843481072, guid: 01489deeeb7ca1744877c2e3e590d958, type: 3}
@@ -10843,6 +10860,7 @@ MonoBehaviour:
   attackRate: 0
   maxHealth: 0
   speed: 0
+  shipModel: {fileID: 0}
 --- !u!4 &1822197630 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4147015843481072, guid: 01489deeeb7ca1744877c2e3e590d958, type: 3}
@@ -11662,8 +11680,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c785a20457eaf92458683166b877c3be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectionReticles:
-  - {fileID: 0}
   solarSystemGraph: {fileID: 915298356}
   path: []
 --- !u!4 &1928773799

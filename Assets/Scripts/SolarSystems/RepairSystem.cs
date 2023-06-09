@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RepairSystem : MonoBehaviour
+public class RepairSystem : SolarAddons
 {
     [SerializeField] SolarSystem solarSystem;
     [SerializeField] float repairRate;

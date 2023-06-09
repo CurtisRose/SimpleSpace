@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class UserInput : MonoBehaviour
 {
-    [SerializeField] List<Transform> selectionReticles;
     SelectableObject currentlySelectedObject;
 
     [SerializeField] SolarSystemGraph solarSystemGraph;
