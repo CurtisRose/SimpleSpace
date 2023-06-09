@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Atmosphere_Sun_Green_Dense_Sharp Variant_Planet_01
+  m_Shader: {fileID: 4800000, guid: 539f40a0f7038ff4bbf9d633ec6e8e6e, type: 3}
+  m_Parent: {fileID: 2100000, guid: 374bdbef9ea513c41984c9f3a5aba1d0, type: 2}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _SURFACE_TYPE_TRANSPARENT
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    MotionVector: User
+    RenderType: Transparent
+  disabledShaderPasses:
+  - DistortionVectors
+  - MOTIONVECTORS
+  - TransparentBackface
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _AtmosphereRadius: 9691.2
+    - _EnableFogOnTransparent: 0
+    - _GlobalScale: 431.86
+    - _PlanetRadius: 3298
+    - _StencilRefDepth: 0
+    - _StencilRefMV: 32
+    - _StencilWriteMaskDepth: 8
+    - _StencilWriteMaskGBuffer: 14
+    - _StencilWriteMaskMV: 40
+    - _StepsI: 4
+    - _UsePointLight: 0
+    - _density_multiplier: 2
+    - _light_intensity: 0.005
+    m_Colors:
+    - _Ambient: {r: 0.01223745, g: 0.103773594, b: 0.047148038, a: 1}
+    - _Mie: {r: 0, g: 0.5943396, b: 0.21002984, a: 1}
+    - _Ray: {r: 0, g: 0, b: 0, a: 1}
+  m_BuildTextureStacks: []

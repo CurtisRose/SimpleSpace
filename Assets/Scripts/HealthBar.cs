@@ -16,7 +16,10 @@ public class HealthBar : MonoBehaviour
     {
         //Debug.Log("HealthBarStarted");
         ship = GetComponentInParent<ShipUIElement>().ship;
-        gameObject.name += " " + ship.name;
+        if (ship != null)
+        {
+            gameObject.name += " " + ship.name;
+        }
         healthChunks = new List<Image>();
         for (int i = 0; i < ship.maxHealth; i++)
         {

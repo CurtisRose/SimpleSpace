@@ -23,8 +23,16 @@ public class SolarSystem : SelectableObject
     public delegate void FleetArrivalEvent(Fleet arrivingFleet);
     public event FleetArrivalEvent OnFleetArrival;
 
+    [SerializeField] Transform placeholderPlanet;
+
+    [SerializeField] public int numberOfPlanets = 5;
+
+    public Transform star;
+    Material starMaterial;
+
     private void Start()
     {
+        starMaterial = star.GetComponent<Renderer>().material;
         UpdatePlanetType();
         gameObject.name = solarSystemName;
         targetingReticle.gameObject.SetActive(false);
@@ -33,13 +41,12 @@ public class SolarSystem : SelectableObject
         {
             SwitchTeams(fleet.teamName);
         }
-    }
+        else
+        {
+            SwitchTeams(Team.TeamName.NONE);
+        }
 
-    // Called when values change in inspector
-    void OnValidate()
-    {
-        // Causes error, but does it's job
-        UpdatePlanetType();
+        placeholderPlanet.GetComponent<Renderer>().enabled = false;
     }
 
     public override void Select()
@@ -57,7 +64,30 @@ public class SolarSystem : SelectableObject
     public void SwitchTeams(Team.TeamName teamName)
     {
         this.teamName = teamName;
-        GetComponentInChildren<Renderer>().material.color = Team.GetTeamColor(teamName);
+
+        Color starColor = Team.GetTeamColor(teamName);
+        //starColor = Color.white;
+
+        Color temp = new Color(starColor.r - 0.6f, starColor.g - 0.6f, starColor.b - 0.6f, (152f / 256f));
+        starMaterial.SetColor("_Cool", temp);
+
+        temp = new Color(starColor.r - 0.3f, starColor.g - 0.3f, starColor.b - 0.3f, (206f / 256f));
+        starMaterial.SetColor("_Warm", temp);
+
+        temp = new Color(starColor.r, starColor.g, starColor.b, (26f / 256f));
+        starMaterial.SetColor("_Hot", temp);
+
+        starMaterial.SetColor("_FresnelColor", starColor);
+
+
+
+        foreach (Renderer coronaRenderer in star.GetComponentsInChildren<Renderer>())
+        {
+            temp = new Color(starColor.r + 0.2f, starColor.g + 0.2f, starColor.b + 0.2f, (14f / 256f));
+            coronaRenderer.material.SetColor("_CoronaColor", temp);
+        }
+
+        //GetComponentInChildren<Renderer>().material.color = Team.GetTeamColor(teamName);
     }
 
     void UpdatePlanetType()
@@ -126,9 +156,17 @@ public class SolarSystem : SelectableObject
         }
     }
 
+    public bool IsSelected()
+    {
+        return selected;
+    }
+
     public void FleetDeparting(Fleet departingFleet)
     {
         if (fleet != null && fleet.shipsInFleet.Count <= 0)
+        {
+            fleet = null;
+        } else if (fleet == departingFleet)
         {
             fleet = null;
         }

@@ -57,17 +57,24 @@ public class Fleet : MonoBehaviour
             transform.position = solarSystem.transform.position;
             
             // If the system you are passing through has any ships or is already in combat, this fleet must stop and join battle.
-            
             if(solarSystem.GetFleet() != null && 
                 (solarSystem.GetFleet().teamName != teamName || 
                 solarSystem.InSpaceCombat()))
             {
                 solarSystem.FleetArrival(this);
                 yield break;
+            } else
+            {
+                solarSystem.FleetArrival(this);
+                // If this isn't the target destination, then we are just passing through.
+                // Claim it by arriving then continue on
+                if (solarSystem != path[path.Count - 1])
+                {
+                    solarSystem.FleetDeparting(this);
+                }
             }
         }
         currentSystem = path[path.Count-1];
-        currentSystem.FleetArrival(this);
     }
 
     public void MergeFleet(Fleet other)
@@ -83,5 +90,10 @@ public class Fleet : MonoBehaviour
     public void ShipDestroyed(Ship ship)
     {
         shipsInFleet.Remove(ship);
+    }
+
+    public void DestroyFleet()
+    {
+        Destroy(this.gameObject);
     }
 }

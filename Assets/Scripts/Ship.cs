@@ -25,6 +25,8 @@ public class Ship : MonoBehaviour
     public delegate void Killed(Ship ship);
     public event Attacked OnKilled;
 
+    public GameObject shipModel;
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -62,7 +64,8 @@ public class Ship : MonoBehaviour
         {
             GetComponentInParent<Fleet>().ShipDestroyed(this);
             OnKilled(this);
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+            Destroy(shipModel);
         }
     }
 

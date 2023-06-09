@@ -160,7 +160,7 @@ public class BattleManager : MonoBehaviour
         {
             if (fleetsInCombat[i].shipsInFleet.Count <= 0)
             {
-                Destroy(fleetsInCombat[i].gameObject);
+                fleetsInCombat[i].DestroyFleet();
                 fleetsInCombat.RemoveAt(i);
             }
         }
@@ -171,6 +171,14 @@ public class BattleManager : MonoBehaviour
                 GetComponentInParent<SolarSystem>().FleetArrival(fleetsInCombat[i]);
             }
         }
+
+        // Destroy each of the fleet info panels in the combat screen
+        foreach (Transform child in fleetCombatInfoContentLocation)
+        {
+            Destroy(child.gameObject);
+        }
+
+        fleetsInCombat.Clear();
     }
 
     IEnumerator BlinkBattleIndicator()

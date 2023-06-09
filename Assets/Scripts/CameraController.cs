@@ -12,27 +12,36 @@ public class CameraController : MonoBehaviour
     public float maxFov = 90f;
     public Vector2 limitX = new Vector2(-40f, 40f);
     public Vector2 limitZ = new Vector2(-40f, 40f);
+    Camera cameraActual;
+    public float panSpeedActual;
+
+    private void Awake()
+    {
+        cameraActual = GetComponent<Camera>();
+    }
 
     void Update()
     {
         Vector3 pos = transform.position;
-        float orthSize = GetComponent<Camera>().orthographicSize;
+        float orthSize = cameraActual.orthographicSize;
+
+        panSpeedActual = panSpeed * orthSize;
 
         if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness)
         {
-            pos.z += panSpeed * Time.deltaTime;
+            pos.z += panSpeedActual * Time.deltaTime;
         }
         if (Input.GetKey("s") || Input.mousePosition.y <= panBorderThickness)
         {
-            pos.z -= panSpeed * Time.deltaTime;
+            pos.z -= panSpeedActual * Time.deltaTime;
         }
         if (Input.GetKey("d") || Input.mousePosition.x >= Screen.width - panBorderThickness)
         {
-            pos.x += panSpeed * Time.deltaTime;
+            pos.x += panSpeedActual * Time.deltaTime;
         }
         if (Input.GetKey("a") || Input.mousePosition.x <= panBorderThickness)
         {
-            pos.x -= panSpeed * Time.deltaTime;
+            pos.x -= panSpeedActual * Time.deltaTime;
         }
 
         float scroll = 0;

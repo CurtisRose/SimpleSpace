@@ -49,20 +49,25 @@ public class SolarSystemUI : MonoBehaviour
     public void UpdateUI()
     {
         HideUI();
-        if (solarSystem.InSpaceCombat())
+        // If the solar system is not selected, then don't display it's info
+        if (solarSystem.IsSelected())
         {
-            DisplayFleetBattlePanel();
-        }
-        else
-        {
-            DisplaySolarSystemPanel();
-            if (solarSystem.GetFleet() != null)
+            if (solarSystem.InSpaceCombat())
             {
-                DisplayFleetInfoPanel(solarSystem.GetFleet());
-            } else
+                DisplayFleetBattlePanel();
+            }
+            else
             {
-                fleetSelection.ClearSelection();
-                fleetPanel.gameObject.SetActive(false);
+                DisplaySolarSystemPanel();
+                if (solarSystem.GetFleet() != null)
+                {
+                    DisplayFleetInfoPanel(solarSystem.GetFleet());
+                }
+                else
+                {
+                    fleetSelection.ClearSelection();
+                    fleetPanel.gameObject.SetActive(false);
+                }
             }
         }
     }

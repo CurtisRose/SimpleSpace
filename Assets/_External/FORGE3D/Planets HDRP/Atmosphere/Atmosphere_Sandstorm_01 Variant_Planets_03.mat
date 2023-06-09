@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Atmosphere_Sandstorm_01 Variant_Planets_03
+  m_Shader: {fileID: 4800000, guid: 539f40a0f7038ff4bbf9d633ec6e8e6e, type: 3}
+  m_Parent: {fileID: 2100000, guid: 922564f7a50c0b041a661920d3fd04aa, type: 2}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _ENABLE_FOG_ON_TRANSPARENT
+  - _SURFACE_TYPE_TRANSPARENT
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    MotionVector: User
+    RenderType: Transparent
+  disabledShaderPasses:
+  - DistortionVectors
+  - MOTIONVECTORS
+  - TransparentBackface
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _AtmosphereRadius: 508.7
+    - _GlobalScale: -175.79
+    - _PlanetRadius: 395.11
+    - _StencilRefDepth: 1
+    - _StencilRefMV: 33
+    - _StencilWriteMaskDepth: 9
+    - _StencilWriteMaskGBuffer: 15
+    - _StencilWriteMaskMV: 41
+    - _StepsI: 44
+    - _StepsL: 4
+    - _density_multiplier: 1644.3
+    - _g: 1.5
+    - _light_intensity: 53.6
+    - _mie_height_scale: 0.75
+    m_Colors:
+    - _Mie: {r: 1, g: 0.11792451, b: 0.21495251, a: 1}
+    - _Ray: {r: 0.15521538, g: 0.17220369, b: 0.3018868, a: 1}
+  m_BuildTextureStacks: []
