@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8602ce16944e852419b986b9075a4050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialScale: 1.2
 --- !u!1 &325066656848374051
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,6 +172,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1247,6 +1249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8602ce16944e852419b986b9075a4050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialScale: 1
 --- !u!1 &5528755842720804438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1452,6 +1455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8602ce16944e852419b986b9075a4050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialScale: 1.5
 --- !u!1 &6832863931861837074
 GameObject:
   m_ObjectHideFlags: 0
@@ -1768,7 +1772,7 @@ Transform:
   - {fileID: 6159409023488191686}
   - {fileID: 3267816112001225217}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8738152359540161365
 MonoBehaviour:
@@ -1798,6 +1802,8 @@ MonoBehaviour:
   fleetSelection: {fileID: 2539821352819519098}
   teamName: 0
   placeholderPlanet: {fileID: 6494667120296613950}
+  numberOfPlanets: 5
+  star: {fileID: 0}
 --- !u!114 &1251695496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1924,6 +1930,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 3267816112001225217}
     m_Modifications:
     - target: {fileID: 5575276611813520740, guid: 7d84536844e2c7d4cb56f8e48927b288, type: 3}
@@ -2039,6 +2046,7 @@ PrefabInstance:
       value: 0.9980769
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d84536844e2c7d4cb56f8e48927b288, type: 3}
 --- !u!114 &357041421580171944 stripped
 MonoBehaviour:

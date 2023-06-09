@@ -5,7 +5,7 @@ using UnityEngine;
 public class ConstantSize : MonoBehaviour
 {
     float initialOrthographicSize = 10f;
-    float initialScale = 1f;
+    [SerializeField] float initialScale = 1f;
     Camera camera;
 
     private void Start()
