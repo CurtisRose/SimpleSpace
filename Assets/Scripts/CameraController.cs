@@ -56,6 +56,11 @@ public class CameraController : MonoBehaviour
 
     void Zooming()
     {
+        // If the mouse is over UI don't zoom
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         Vector3 position = cameraActual.transform.position;
         if (scroll != 0.0f)

@@ -96,6 +96,7 @@ public class Fleet : MonoBehaviour
     public void AddShip(Ship ship)
     {
         shipsInFleet.Add(ship);
+        ship.transform.parent = this.transform;
     }
 
     public void DestroyFleet()

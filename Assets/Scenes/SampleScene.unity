@@ -2693,7 +2693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8029805392140901366, guid: f2fc8c0048692094184cd91be3c2ded1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -798.6467
+      value: -798.618
       objectReference: {fileID: 0}
     - target: {fileID: 8738152359540161364, guid: f2fc8c0048692094184cd91be3c2ded1, type: 3}
       propertyPath: m_Name
@@ -3076,6 +3076,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &496360055 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8029805392140901365, guid: f2fc8c0048692094184cd91be3c2ded1, type: 3}
+  m_PrefabInstance: {fileID: 1251695493}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &496360058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496360055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 0
 --- !u!1 &499111448
 GameObject:
   m_ObjectHideFlags: 0
@@ -5944,7 +5963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8029805392140901366, guid: f2fc8c0048692094184cd91be3c2ded1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -798.6467
+      value: -798.618
       objectReference: {fileID: 0}
     - target: {fileID: 8738152359540161364, guid: f2fc8c0048692094184cd91be3c2ded1, type: 3}
       propertyPath: m_Name
@@ -7693,6 +7712,10 @@ PrefabInstance:
       propertyPath: maxSize
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 500780036491903477, guid: f2fc8c0048692094184cd91be3c2ded1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 943380608339668516, guid: f2fc8c0048692094184cd91be3c2ded1, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -7908,6 +7931,26 @@ PrefabInstance:
     - target: {fileID: 7282915199083091693, guid: f2fc8c0048692094184cd91be3c2ded1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732006002857464662, guid: f2fc8c0048692094184cd91be3c2ded1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732006002857464662, guid: f2fc8c0048692094184cd91be3c2ded1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8029805392096651342, guid: f2fc8c0048692094184cd91be3c2ded1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8029805392096651342, guid: f2fc8c0048692094184cd91be3c2ded1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8029805392140901366, guid: f2fc8c0048692094184cd91be3c2ded1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -798.61786
       objectReference: {fileID: 0}
     - target: {fileID: 8738152359540161364, guid: f2fc8c0048692094184cd91be3c2ded1, type: 3}
       propertyPath: m_Name
@@ -11269,7 +11312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8029805392140901366, guid: f2fc8c0048692094184cd91be3c2ded1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -798.64685
+      value: -798.61755
       objectReference: {fileID: 0}
     - target: {fileID: 8738152359540161364, guid: f2fc8c0048692094184cd91be3c2ded1, type: 3}
       propertyPath: m_Name
@@ -11843,7 +11886,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8029805392140901366, guid: f2fc8c0048692094184cd91be3c2ded1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -798.6469
+      value: -798.61774
       objectReference: {fileID: 0}
     - target: {fileID: 8738152359540161364, guid: f2fc8c0048692094184cd91be3c2ded1, type: 3}
       propertyPath: m_Name
