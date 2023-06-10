@@ -114,7 +114,10 @@ public class SolarSystem : SelectableObject
         if (arrivingFleet == fleet)
         {
             solarSystemUI.UpdateUI();
-            OnFleetArrival(arrivingFleet);
+            if (OnFleetArrival != null)
+            {
+                OnFleetArrival(arrivingFleet);
+            }
             return;
         }
 
@@ -214,14 +217,17 @@ public class SolarSystem : SelectableObject
         newFleet.name = "New Fleet";
         newFleet.currentSystem = this;
 
-        foreach(Ship ship in ships)
+        if (fleet != null && fleet.shipsInFleet != null)
         {
-            fleet.shipsInFleet.Remove(ship);
-        }
+            foreach (Ship ship in ships)
+            {
+                fleet.shipsInFleet.Remove(ship);
+            }
 
-        if (fleet.shipsInFleet.Count == 0)
-        {
-            Destroy(fleet.gameObject);
+            if (fleet.shipsInFleet.Count == 0)
+            {
+                Destroy(fleet.gameObject);
+            }
         }
 
         return newFleet;

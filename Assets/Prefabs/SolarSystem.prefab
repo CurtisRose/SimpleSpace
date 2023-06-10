@@ -1253,7 +1253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialScale: 1
   minSize: 5
-  maxSize: 20
+  maxSize: 10
 --- !u!1 &5528755842720804438
 GameObject:
   m_ObjectHideFlags: 0

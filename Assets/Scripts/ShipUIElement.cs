@@ -46,11 +46,25 @@ public class ShipUIElement : MonoBehaviour,
         healthBar.UpdateHealth();
         if (ship == null || ship.GetCurrentHealth() <= 0)
         {
-            shipImage.color = new Color(1, 0, 0, 0.8f);
-            shipSelectorImage.color = Color.red;
-            foreach (Image image in attackRateSlider.GetComponentsInChildren<Image>())
+            if (shipImage != null)
             {
-                image.color = Color.red;
+                shipImage.color = new Color(1, 0, 0, 0.8f);
+            }
+            else
+            {
+                //Debug.Log("Ship Is Already Dead");
+                return;
+            }
+            if (shipSelectorImage != null)
+            {
+                shipSelectorImage.color = Color.red;
+            }
+            if (attackRateSlider != null)
+            {
+                foreach (Image image in attackRateSlider.GetComponentsInChildren<Image>())
+                {
+                    image.color = Color.red;
+                }
             }
         }
     }

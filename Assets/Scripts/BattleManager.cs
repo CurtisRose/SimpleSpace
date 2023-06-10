@@ -15,6 +15,13 @@ public class BattleManager : MonoBehaviour
     [SerializeField] Transform fleetCombatInfoPrefab;
     [SerializeField] ShipUIElement shipUIElement;
 
+    private List<DamageEvent> pendingDamage = new List<DamageEvent>();
+    public class DamageEvent
+    {
+        public Ship target;
+        public int damage;
+    }
+
     private void Awake()
     {
         battleIndicator.gameObject.SetActive(false);
@@ -40,6 +47,13 @@ public class BattleManager : MonoBehaviour
                 }
             }
         }
+        ResolveDamage();
+    }
+
+    public void ShipFired(Ship target, int damage)
+    {
+        // Add a pending damage event instead of directly applying damage
+        pendingDamage.Add(new DamageEvent { target = target, damage = damage });
     }
 
     private void ShipDestroyed(Ship ship)
@@ -52,11 +66,6 @@ public class BattleManager : MonoBehaviour
             {
                 numRemainingFleets += 1;
             }
-        }
-
-        if (numRemainingFleets <= 1)
-        {
-            StopBattle();
         }
     }
 
@@ -135,7 +144,37 @@ public class BattleManager : MonoBehaviour
         if (shipsToAttack.Count > 0)
         {
             int randomShip = Random.Range(0, shipsToAttack.Count);
-            shipsToAttack[randomShip].TakeDamage(ship.attackPower);
+            // Do not attack directly, add to pendingDamage event list and resolve after this update loop
+            // The reasoning is that the first ship to fire has the advantage otherwise, killing other ships before they can be resolved.
+            // This also causes annoying race conditions
+            pendingDamage.Add(new DamageEvent { target = shipsToAttack[randomShip], damage = ship.attackPower });
+        }
+    }
+
+    public void ResolveDamage()
+    {
+        // Apply all pending damage
+        foreach (DamageEvent damageEvent in pendingDamage)
+        {
+            damageEvent.target.TakeDamage(damageEvent.damage);
+        }
+        // Clear the list for the next frame
+        pendingDamage.Clear();
+
+        // Resolve the battle as well if necessary
+
+        int numRemainingFleets = 0;
+        foreach (Fleet fleet in fleetsInCombat)
+        {
+            if (fleet.shipsInFleet.Count > 0)
+            {
+                numRemainingFleets += 1;
+            }
+        }
+
+        if (numRemainingFleets <= 1)
+        {
+            StopBattle();
         }
     }
 

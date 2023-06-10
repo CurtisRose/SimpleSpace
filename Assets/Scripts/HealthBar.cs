@@ -39,7 +39,7 @@ public class HealthBar : MonoBehaviour
             {
                 if (healthChunks[i] == null)
                 {
-                    Debug.Log("Test Health Bar Image Missing");
+                    //Debug.Log("Test Health Bar Image Missing");
                     continue;
                 }
                 // Health colors down from the top, which is 0

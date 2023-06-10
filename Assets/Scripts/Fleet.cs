@@ -93,6 +93,11 @@ public class Fleet : MonoBehaviour
         shipsInFleet.Remove(ship);
     }
 
+    public void AddShip(Ship ship)
+    {
+        shipsInFleet.Add(ship);
+    }
+
     public void DestroyFleet()
     {
         Destroy(this.gameObject);
