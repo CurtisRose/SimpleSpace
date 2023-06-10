@@ -13,22 +13,21 @@ public class CameraController : MonoBehaviour
     public float maxFov = 90f;
     public Vector2 limitX = new Vector2(-40f, 40f);
     public Vector2 limitZ = new Vector2(-40f, 40f);
-    Camera cameraActual;
+    [SerializeField] Camera cameraActual;
     public float panSpeedActual;
-    public float targetOrtho;
+    public float targetfov;
 
     private void Awake()
     {
-        cameraActual = GetComponent<Camera>();
-        targetOrtho = cameraActual.orthographicSize;
+        targetfov = cameraActual.transform.position.y;
     }
 
     void Update()
     {
         Vector3 pos = transform.position;
-        float orthSize = cameraActual.orthographicSize;
+        float zoomAmount = cameraActual.transform.position.y;
 
-        panSpeedActual = panSpeed * orthSize;
+        panSpeedActual = panSpeed * zoomAmount;
 
         if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness)
         {
@@ -52,34 +51,19 @@ public class CameraController : MonoBehaviour
 
         transform.position = pos;
 
-        ZoomingNew();
+        Zooming();
     }
 
-    void ZoomingOld()
-    {
-        float orthSize = cameraActual.orthographicSize;
-        float scroll = 0;
-        // If mouse is over UI, don't zoom in and out. UI might be responding to it.
-        if (!EventSystem.current.IsPointerOverGameObject())
-        {
-            scroll = Input.GetAxis("Mouse ScrollWheel");
-        }
-        orthSize -= scroll * scrollSpeed * Time.deltaTime * orthSize;
-        orthSize = Mathf.Clamp(orthSize, minFov, maxFov);
-
-        cameraActual.orthographicSize = orthSize;
-    }
-
-    void ZoomingNew()
+    void Zooming()
     {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        float orthSize = cameraActual.orthographicSize;
+        Vector3 position = cameraActual.transform.position;
         if (scroll != 0.0f)
         {
-            targetOrtho -= scroll * scrollSpeed * Time.deltaTime * (orthSize);
-            targetOrtho = Mathf.Clamp(targetOrtho, minFov, maxFov);
+            targetfov -= scroll * scrollSpeed * Time.deltaTime * (position.y);
+            targetfov = Mathf.Clamp(targetfov, minFov, maxFov);
         }
-
-        Camera.main.orthographicSize = Mathf.MoveTowards(cameraActual.orthographicSize, targetOrtho, smoothSpeed * Time.deltaTime);
+        position.y = targetfov;
+        cameraActual.transform.position = position;
     }
 }

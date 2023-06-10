@@ -197,7 +197,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthChunk: {fileID: 6341953931017777818, guid: 168562d70886eab4c869a3f27a66b767, type: 3}
   ship: {fileID: 0}
-  shipSelectorImage: {fileID: 5986413051449363412}
 --- !u!1 &1514871215130283232
 GameObject:
   m_ObjectHideFlags: 0

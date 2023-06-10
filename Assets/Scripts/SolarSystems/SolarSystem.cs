@@ -68,13 +68,13 @@ public class SolarSystem : SelectableObject
         Color starColor = Team.GetTeamColor(teamName);
         //starColor = Color.white;
 
-        Color temp = new Color(starColor.r - 0.6f, starColor.g - 0.6f, starColor.b - 0.6f, (152f / 256f));
+        Color temp = new Color(starColor.r - 0.6f, starColor.g - 0.6f, starColor.b - 0.6f, (36f / 256f));
         starMaterial.SetColor("_Cool", temp);
 
         temp = new Color(starColor.r - 0.3f, starColor.g - 0.3f, starColor.b - 0.3f, (206f / 256f));
         starMaterial.SetColor("_Warm", temp);
 
-        temp = new Color(starColor.r, starColor.g, starColor.b, (26f / 256f));
+        temp = new Color(starColor.r, starColor.g, starColor.b, (18f / 256f));
         starMaterial.SetColor("_Hot", temp);
 
         starMaterial.SetColor("_FresnelColor", starColor);

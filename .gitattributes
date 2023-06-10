@@ -1,3 +1,4 @@
 Assets/_External/FORGE3D/Planets filter=lfs diff=lfs merge=lfs -text
 HDRP/Skybox/PlanetsSkybox.cubemap filter=lfs diff=lfs merge=lfs -text
 Assets/_External/FORGE3D/Planets[[:space:]]HDRP/Skybox/PlanetsSkybox.cubemap filter=lfs diff=lfs merge=lfs -text
+Assets/Materials/Skybox/PlanetsSkybox.cubemap filter=lfs diff=lfs merge=lfs -text
